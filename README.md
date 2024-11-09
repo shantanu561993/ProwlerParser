@@ -20,7 +20,7 @@ This tool parses Prowler output files and generates report-friendly summaries. W
    ```
 2. **Run the Tool**:
    ```bash
-    docker run -d --rm -p 8501:8501 pp
+    docker run -d -v ./app/:/app --rm -p 8501:8501 pp
    ```
 3. **Access the Tool**:
    Once running, open a web browser and navigate to http://localhost:8501.

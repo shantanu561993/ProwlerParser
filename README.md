@@ -28,3 +28,4 @@ This tool parses Prowler output files and generates report-friendly summaries. W
    Upload the prowler json output. Multiple Files are supported
 5. **License**:
    Do Whatever the hell you want to do. If you want please do mention my name and website.
+![Screenshot](imgs/image.png?raw=true "screenshot")

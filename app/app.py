@@ -42,6 +42,7 @@ def finding_showcase(title,severity, risk_details, remediation, uid, region):
 
 st.title('Prowler Parser v0.1')
 files = st.file_uploader("Choose a prowler JSON file", accept_multiple_files=True)
+on=st.toggle("Activate The Kai Filter", True)
 if files:
     df = pd.DataFrame()
     for file in files:
@@ -79,11 +80,12 @@ if files:
         df = pd.concat([df, df_temp])
     #Remove rows with status_code = PASS or MANUAL
     df = df[~df['status_code'].isin(['PASS', 'MANUAL'])]
-    # remove rows finding_info.title is in removal list 
-    try:
-        df = df[~df['finding_info.title'].isin(removal)]
-    except:
-         pass
+    if on:
+        # remove rows finding_info.title is in removal list 
+        try:
+            df = df[~df['finding_info.title'].isin(removal)]
+        except:
+            pass
 
 
     #print unique values of the column severity

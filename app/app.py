@@ -20,7 +20,7 @@ st.sidebar.markdown(
 )
 
 @st.dialog("Finding Detail",width="large")
-def finding_showcase(title,severity ,message, risk_details, remediation, uid, region):
+def finding_showcase(title,severity, risk_details, remediation, uid, region):
     st.markdown(f"""### Title: {title[0]}""")
     st.markdown(f""" **Severity:** {"\n".join(severity)}""")
     st.markdown(f""" **Affected Items:** {len(uid)}""")
@@ -93,19 +93,17 @@ if files:
                                                             'severity': lambda x: ', '.join(x.unique()),  
                                                             'finding_info.title': lambda x: ', '.join(x.unique()),
                                                             'status_detail': lambda x: '\n\n'.join(x.unique()),
-                                                            'message': lambda x: '\n\n '.join(x.unique()),
                                                             'risk_details': lambda x: '\n\n'.join(x.unique()),
                                                             'remediation.desc': lambda x: '\n\n'.join(x.unique()),
                                                             'uid': lambda x: '\n\n'.join(x.unique()),
                                                             'region': lambda x: '\n\n'.join(x.unique()),
                                                             })
         st.write(f'Number of findings: {critical.shape[0]} Combined to: {df_grouped.shape[0]}')
-        st.dataframe(df_grouped[['severity','finding_info.title','status_detail','message','risk_details','remediation.desc','uid','region']])
+        st.dataframe(df_grouped[['severity','finding_info.title','status_detail','risk_details','remediation.desc','uid','region']])
         df_grouped = critical.groupby('finding_info.title').agg({
                     'severity': lambda x: list(x.unique()),
                     'finding_info.title': lambda x: list(x.unique()),
                     'status_detail': lambda x: list(x.unique()),
-                    'message': lambda x: list(x.unique()),
                     'risk_details': lambda x: list(x.unique()),
                     'remediation.desc': lambda x: list(x.unique()),
                     'uid': lambda x: list(x.unique()),
@@ -113,7 +111,7 @@ if files:
                 })
         for index,row in df_grouped.iterrows():
              if st.button(f"{row['finding_info.title'][0]}"):
-                    finding_showcase(row['finding_info.title'], row['severity'] ,row['message'], row['risk_details'], row['remediation.desc'], row['uid'], row['region'])
+                    finding_showcase(row['finding_info.title'], row['severity'], row['risk_details'], row['remediation.desc'], row['uid'], row['region'])
     
     with st.expander("Medium",icon="🟠"):
         medium = df[df['severity_id'].isin([3])]
@@ -121,19 +119,17 @@ if files:
                                                             'severity': lambda x: ', '.join(x.unique()),  
                                                             'finding_info.title': lambda x: ', '.join(x.unique()),
                                                             'status_detail': lambda x: '\n\n'.join(x.unique()),
-                                                            'message': lambda x: '\n\n '.join(x.unique()),
                                                             'risk_details': lambda x: '\n\n'.join(x.unique()),
                                                             'remediation.desc': lambda x: '\n\n'.join(x.unique()),
                                                             'uid': lambda x: '\n\n'.join(x.unique()),
                                                             'region': lambda x: '\n\n'.join(x.unique()),
                                                             })
         st.write(f'Number of findings: {medium.shape[0]} Combined to: {df_grouped.shape[0]}')
-        st.dataframe(df_grouped[['severity','finding_info.title','status_detail','message','risk_details','remediation.desc','uid','region']])
+        st.dataframe(df_grouped[['severity','finding_info.title','status_detail','risk_details','remediation.desc','uid','region']])
         df_grouped = medium.groupby('finding_info.title').agg({
                     'severity': lambda x: list(x.unique()),
                     'finding_info.title': lambda x: list(x.unique()),
                     'status_detail': lambda x: list(x.unique()),
-                    'message': lambda x: list(x.unique()),
                     'risk_details': lambda x: list(x.unique()),
                     'remediation.desc': lambda x: list(x.unique()),
                     'uid': lambda x: list(x.unique()),
@@ -141,7 +137,7 @@ if files:
                 })
         for index,row in df_grouped.iterrows():
             if st.button(f"{row['finding_info.title'][0]}"):
-                    finding_showcase(row['finding_info.title'], row['severity'] ,row['message'], row['risk_details'], row['remediation.desc'], row['uid'], row['region'])
+                    finding_showcase(row['finding_info.title'], row['severity'], row['risk_details'], row['remediation.desc'], row['uid'], row['region'])
                         
     with st.expander("Low",icon="🟢"):
         low = df[df['severity_id'].isin([2,1])]
@@ -149,19 +145,17 @@ if files:
                                                             'severity': lambda x: ', '.join(x.unique()),  
                                                             'finding_info.title': lambda x: ', '.join(x.unique()),
                                                             'status_detail': lambda x: '\n\n'.join(x.unique()),
-                                                            'message': lambda x: '\n\n '.join(x.unique()),
                                                             'risk_details': lambda x: '\n\n'.join(x.unique()),
                                                             'remediation.desc': lambda x: '\n\n'.join(x.unique()),
                                                             'uid': lambda x: '\n\n'.join(x.unique()),
                                                             'region': lambda x: '\n\n'.join(x.unique()),
                                                             })
         st.write(f'Number of findings: {low.shape[0]} Combined to: {df_grouped.shape[0]}')
-        st.dataframe(df_grouped[['severity','finding_info.title','status_detail','message','risk_details','remediation.desc','uid','region']])
+        st.dataframe(df_grouped[['severity','finding_info.title','status_detail','risk_details','remediation.desc','uid','region']])
         df_grouped = low.groupby('finding_info.title').agg({
                     'severity': lambda x: list(x.unique()),
                     'finding_info.title': lambda x: list(x.unique()),
                     'status_detail': lambda x: list(x.unique()),
-                    'message': lambda x: list(x.unique()),
                     'risk_details': lambda x: list(x.unique()),
                     'remediation.desc': lambda x: list(x.unique()),
                     'uid': lambda x: list(x.unique()),
@@ -169,5 +163,5 @@ if files:
                 })
         for index,row in df_grouped.iterrows():
             if st.button(f"{row['finding_info.title'][0]}"):
-                    finding_showcase(row['finding_info.title'], row['severity'] ,row['message'], row['risk_details'], row['remediation.desc'], row['uid'], row['region'])
+                    finding_showcase(row['finding_info.title'], row['severity'], row['risk_details'], row['remediation.desc'], row['uid'], row['region'])
             

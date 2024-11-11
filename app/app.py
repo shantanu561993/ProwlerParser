@@ -2,6 +2,13 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import json
+removal = []
+try:
+    f=open("./ignore.txt", "r")
+    for line in f:
+        removal.append(line.strip())
+except:
+     pass
 # Set the layout to wide mode
 st.set_page_config(layout="wide", page_title="Prowler Parser",  page_icon="🤷‍♂️", initial_sidebar_state="auto", menu_items=None)
 pd.set_option("display.max_rows", None)
@@ -72,6 +79,12 @@ if files:
         df = pd.concat([df, df_temp])
     #Remove rows with status_code = PASS or MANUAL
     df = df[~df['status_code'].isin(['PASS', 'MANUAL'])]
+    # remove rows finding_info.title is in removal list 
+    try:
+        df = df[~df['finding_info.title'].isin(removal)]
+    except:
+         pass
+
 
     #print unique values of the column severity
     with st.expander("Debug Dev Info",icon="🕵️‍♀️"):

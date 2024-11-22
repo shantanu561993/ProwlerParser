@@ -1,25 +1,28 @@
-There are High severity GuardDuty findings 
-Ensure there are no SNS Topics unencrypted
-Ensure that public access to EBS snapshots is disabled
-Ensure that general-purpose bucket policies restrict access to other AWS accounts.
-Ensure no security groups allow ingress from 0.0.0.0/0 or ::/0 to port 3389.
-Ensure no security groups allow ingress from 0.0.0.0/0 or ::/0 to any port.
-Ensure no security groups allow ingress from 0.0.0.0/0 or ::/0 to Windows SQL Server ports 1433 or 1434.
-Ensure no security groups allow ingress from 0.0.0.0/0 or ::/0 to Redis port 6379.
-Ensure no security groups allow ingress from 0.0.0.0/0 or ::/0 to Postgres port 5432.
-Ensure no security groups allow ingress from 0.0.0.0/0 or ::/0 to Oracle ports 1521 or 2483.
-Ensure no security groups allow ingress from 0.0.0.0/0 or ::/0 to MySQL port 3306.
-Ensure no security groups allow ingress from 0.0.0.0/0 or ::/0 to MongoDB ports 27017 and 27018.
-Ensure no security groups allow ingress from 0.0.0.0/0 or ::/0 to Memcached port 11211.
-Ensure no security groups allow ingress from 0.0.0.0/0 or ::/0 to Kafka port 9092.
-Ensure no security groups allow ingress from 0.0.0.0/0 or ::/0 to Elasticsearch/Kibana ports.
-Ensure no security groups allow ingress from 0.0.0.0/0 or ::/0 to Cassandra ports 7199 or 9160 or 8888.
-Ensure no security groups allow ingress and egress from wide-open IP address with a mask between 0 and 24.
-Ensure multi-factor authentication (MFA) is enabled for all IAM users that have a console password.
-Ensure IAM Service Roles prevents against a cross-service confused deputy attack
-Ensure IAM Roles do not have ReadOnlyAccess access for external AWS accounts
-ECS containers should be limited to read-only access to root filesystems
-Check if SNS topics have policy set as Public
-Check if EC2 instances managed by Systems Manager are compliant with patching requirements.
 Check if CloudFront distributions have a default root object.
+Check if EC2 instances managed by Systems Manager are compliant with patching requirements.
+Check if Lambda functions have resource-based policy set as Public.
+Check if SNS topics have policy set as Public
+ECS containers should be limited to read-only access to root filesystems
+Ensure Elasticache Redis cache cluster has automatic backups enabled.
+Ensure IAM Roles do not have ReadOnlyAccess access for external AWS accounts
+Ensure IAM Service Roles prevents against a cross-service confused deputy attack
+Ensure Kubernetes cluster runs on a supported Kubernetes version
+Ensure SSL mode is enabled in DMS endpoint
+Ensure no security groups allow ingress and egress from wide-open IP address with a mask between 0 and 24.
+Ensure no security groups allow ingress from 0.0.0.0/0 or ::/0 to Cassandra ports 7199 or 9160 or 8888.
+Ensure no security groups allow ingress from 0.0.0.0/0 or ::/0 to Elasticsearch/Kibana ports.
+Ensure no security groups allow ingress from 0.0.0.0/0 or ::/0 to Kafka port 9092.
+Ensure no security groups allow ingress from 0.0.0.0/0 or ::/0 to Memcached port 11211.
+Ensure no security groups allow ingress from 0.0.0.0/0 or ::/0 to MongoDB ports 27017 and 27018.
+Ensure no security groups allow ingress from 0.0.0.0/0 or ::/0 to MySQL port 3306.
+Ensure no security groups allow ingress from 0.0.0.0/0 or ::/0 to Oracle ports 1521 or 2483.
+Ensure no security groups allow ingress from 0.0.0.0/0 or ::/0 to Postgres port 5432.
+Ensure no security groups allow ingress from 0.0.0.0/0 or ::/0 to Redis port 6379.
+Ensure no security groups allow ingress from 0.0.0.0/0 or ::/0 to Windows SQL Server ports 1433 or 1434.
+Ensure no security groups allow ingress from 0.0.0.0/0 or ::/0 to any port.
+Ensure no security groups allow ingress from 0.0.0.0/0 or ::/0 to port 3389.
 Ensure only hardware MFA is enabled for the root account
+Ensure that general-purpose bucket policies restrict access to other AWS accounts.
+Ensure that public access to EBS snapshots is disabled
+Ensure the default security group of every VPC restricts all traffic.
+Ensure there are no SNS Topics unencrypted
